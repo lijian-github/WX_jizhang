@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "jizhang":"/pages/home/jiyibi/jizhangtemplate/jizhangtemplate"
+  }
+  ,
+  "navigationBarBackgroundColor": "white"
+}

@@ -1,0 +1,26 @@
+
+var threeNum = {
+add_comma_toThousands:function(num) {
+  num = parseFloat(num).toFixed(2)
+  var numN = (num || "0.00").toString();
+  if (num.indexOf('-') != -1) {
+    numN = numN.substring(1)
+  }
+  var numL = numN.split('.')
+  var numI = numL[0]
+  var numF = '.' + numL[1]
+  var result = '';
+  while (numI.length > 3) {
+    result = ',' + numI.slice(-3) + result;
+    numI = numI.slice(0, numI.length - 3);
+  }
+  if (numI) { result = numI + result; result = result += numF }
+  if (num.indexOf('-') != -1) {
+    result = '-'+result
+  }
+  return result
+}
+}
+module.exports = {
+  add_comma_toThousands: threeNum.add_comma_toThousands//暴露接口调用
+}

@@ -1,0 +1,36 @@
+<wxs module="threeNum" src="../../../utils/tothousands.wxs"></wxs>
+<wxs module="tcolor" src="../../../utils/textcolor.wxs"></wxs>
+<view class=" margin-sm padding bg-img shadow-blur bg-mask padding-tb-sm flex align-end " style="background-image: url({{selbg}});height: 350rpx;">
+  <view class="text-white" style='width:100%'>
+  <view class="padding-xs">
+      今日支出：
+    </view>
+    <view class="padding-xs text-xxxl text-price">
+      {{threeNum.add_comma_toThousands(todaypay)}}
+    </view>
+    <view class="padding-sm flex justify-between" style='width:100%'>
+      <view>本月支出：<text class="text-price">{{threeNum.add_comma_toThousands(monthpay)}}</text></view>
+      <view>总支出：<text class="text-price">{{threeNum.add_comma_toThousands(allpay)}}</text></view>
+    </view>
+  </view>
+</view>
+
+<view class='padding response '>
+    <view bindtap='jiyibi' class='flex radius align-center justify-center bg-blue shadow  text-bold text-lg' style='height:80rpx;'>记一笔</view>
+</view>
+    <view wx:if="{{showlist.length==0}}" class="flex flex-direction justify-center  align-center padding-xl">
+       <image src="../../../images/blank.png" style="width:250rpx;height:250rpx"></image>
+       <text class="text-grey padding-sm">近7天您还没有记过帐呢！</text>
+    </view>
+    <view wx:if="{{showlist.length!=0}}" class='cu-list menu card-menu ' >
+        <view class='cu-item ' wx:for="{{showlist}}" wx:key bindtap="getparticulars" data-index='{{index}}'>
+          <view class="round icon-{{item.icon}}" style="font-size:50rpx"></view>
+      <view class="padding-xs content">
+        <view class="text-black">{{item.classify}}</view>
+        <view class="text-gray text-sm"> {{item.date.year}}-{{item.date.month}}-{{item.date.day}} {{item.date.time}} · {{item.accountclassify}}</view>
+      </view>
+      <view class="text-{{tcolor.getcolor(item.type)}} text-xl text-price">{{threeNum.add_comma_toThousands(item.money)}}</view>
+        </view>
+    </view>
+
+

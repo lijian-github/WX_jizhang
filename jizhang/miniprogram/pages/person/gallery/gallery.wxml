@@ -1,0 +1,17 @@
+<!--miniprogram/pages/person/gallery/gallery.wxml-->
+<view wx:if="{{allimgsdata.length==0}}" class="flex flex-direction justify-center  align-center padding-xl " style="margin-top:130rpx">
+       <image src="../../../images/blank.png" style="width:250rpx;height:250rpx"></image>
+       <text class="text-grey padding-sm">没有任何账单图片</text>
+</view>
+
+<view class="cu-list bg-white padding-xs" wx:if="{{allimgsdata.length!=0}}" wx:for="{{allimgsdata}}" wx:for-item="items" wx:key>
+  <view class="flex justify-between align-center padding-xs" data-list="{{items}}" bindtap="showdata"> 
+        <text class="text-gray">{{items.date.year}}-{{items.date.month}}-{{items.date.day}} {{items.date.time}}</text>
+        <view><text>查看账单</text><text class="cuIcon-right"></text></view>
+    </view>
+    <view class="grid col-4 grid-square flex-sub" >
+			<view class="bg-img" wx:for="{{items.pictures}}" wx:key bindtap="viewimg" data-urls='{{items.pictures}}' data-url="{{item}}">
+				<image src='{{item}}' mode='aspectFill'></image>
+      </view>
+    </view>
+</view>

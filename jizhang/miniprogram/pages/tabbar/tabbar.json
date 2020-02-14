@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "home": "../home/index/index",
+    "detail":"../detail/index/index",
+    "charts":"../charts/charts",
+    "person": "../person/index/index"
+  },
+  "navigationBarBackgroundColor": "white"
+}

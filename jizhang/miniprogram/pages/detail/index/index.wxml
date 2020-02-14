@@ -1,0 +1,59 @@
+<!--pages/detail/index/index.wxml-->
+<wxs module="threeNum" src="../../../utils/tothousands.wxs"></wxs>
+<wxs module="tcolor" src="../../../utils/textcolor.wxs"></wxs>
+<view class="nav fixed">
+<view class="bg-white flex justify-between align-center " style="height:60rpx">
+  <view class="flex justify-center align-center text-gray solid-right" style="height:100%;width:50%;">{{barbtn}}</view>
+  <view class="flex justify-center align-center" style="height:100%;width:25%;{{mingxi=='单笔明细'?'border-bottom: 5rpx solid var(--blue);color:var(--blue)':''}}" bindtap="getdborcf" data-mx="单笔明细">单笔明细</view>
+  <view class="flex justify-center align-center" style="height:100%;width:25%;{{mingxi=='分类明细'?'border-bottom: 5rpx solid var(--blue);color:var(--blue)':''}}" bindtap="getdborcf" data-mx="分类明细">分类明细</view>
+</view>
+<view class="bg-white flex justify-between align-center solid-bottom shadow" style="height:70rpx">
+  <view class="flex justify-between">
+  <picker bindchange="onlysort" value="{{index}}" range="{{sortlist}}">
+    <view class="text-sm  flex justify-center align-center padding-sm" >{{sort}}<text class="cuIcon-triangledownfill"></text></view>
+  </picker>
+    <view class="text-sm  flex justify-center align-center padding-sm {{barbtn=='近一周'?'text-blue':''}}" bindtap="tapbarbtn" data-btn="近一周">近一周</view>
+    <view class="text-sm  flex justify-center align-center padding-sm {{barbtn=='近一月'?'text-blue':''}}" bindtap="tapbarbtn" data-btn="近一月">近一月</view>
+    <view class="text-sm  flex justify-center align-center padding-sm {{barbtn=='近三月'?'text-blue':''}}" bindtap="tapbarbtn" data-btn="近三月">近三月</view>
+    <view class="text-sm  flex justify-center align-center padding-sm {{barbtn=='近一年'?'text-blue':''}}" bindtap="tapbarbtn" data-btn="近一年">近一年</view>
+  </view>
+  <view class="flex">
+    <view class="text-sm  flex justify-center align-center padding-sm" bindtap="getsort">筛选
+    <text class="cuIcon-triangledownfill"></text>
+    </view>
+  </view>
+</view>
+</view>
+
+<view wx:if="{{showlist.length==0}}" class="flex flex-direction justify-center  align-center padding-xl " style="margin-top:130rpx">
+       <image src="../../../images/blank.png" style="width:250rpx;height:250rpx"></image>
+       <text class="text-grey padding-sm">没有{{barbtn}}账单数据</text>
+</view>
+
+<view wx:if="{{mingxi=='单笔明细'&&showlist.length!=0}}" class='cu-list menu ' style="margin-top:130rpx">
+    <view class='cu-item' wx:for="{{showlist}}" wx:key bindtap="getparticulars" data-index='{{index}}'>
+      <view class="round icon-{{item.icon}}" style="font-size:50rpx"></view>
+      <view class="padding-xs content">
+        <view class="text-black">{{item.classify}}</view>
+        <view class="text-gray text-sm"> {{item.date.year}}-{{item.date.month}}-{{item.date.day}} {{item.date.time}} · {{item.accountclassify}}</view>
+      </view>
+      <view class="text-{{tcolor.getcolor(item.type)}} text-xl text-price">{{threeNum.add_comma_toThousands(item.money)}}</view>
+        </view>
+    </view>
+
+<view wx:if="{{mingxi=='分类明细'}}"  class='flex flex-direction' style="margin-top:130rpx">
+<view  class='flex flex-direction' wx:for="{{showcflist}}" wx:key wx:for-item="items" >
+    <text class='text-bold text-df padding-sm'>{{items.cftitle}}</text>
+    <view class="cu-list menu">
+         <view class='cu-item' wx:for="{{items.list}}" wx:key  bindtap="getparticulars" data-index='{{index}}' data-list="{{items.list}}">
+          <view class="round icon-{{item.icon}}" style="font-size:50rpx"></view>
+      <view class="padding-xs content">
+        <view class="text-black">{{item.classify}}</view>
+        <view class="text-gray text-sm"> {{item.date.year}}-{{item.date.month}}-{{item.date.day}} {{item.date.time}} · {{item.accountclassify}}</view>
+      </view>
+      <view class="text-{{tcolor.getcolor(item.type)}} text-xl text-price">{{threeNum.add_comma_toThousands(item.money)}}</view>
+        </view>
+    </view>
+</view>
+</view>
+

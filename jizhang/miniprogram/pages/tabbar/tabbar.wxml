@@ -1,0 +1,40 @@
+<!--miniprogram/pages/tabbar/tabbar.wxml-->
+<view class="{{ifnew?'blur':''}}">
+<home wx:if="{{PageCur=='home'}}" ></home>
+<person wx:if="{{PageCur=='person'}}"></person>
+<detail wx:if="{{PageCur=='detail'}}"></detail>
+<charts wx:if="{{PageCur=='charts'}}"></charts>
+</view>
+<view wx:if="{{ifnew}}" class='padding flex flex-direction align-center justify-center cu-bar fixed' style='height:100%;width:100%;'>
+    <view bindtap='create' class='flex round align-center justify-center bg-blue shadow  text-bold text-xl' style='height:250rpx;width:250rpx;'>开启账本</view>
+</view>
+<cover-view  class="cu-bar tabbar bg-white solid-top foot" >
+  <cover-view class="action" bindtap="NavChange" data-cur="home" data-name="首页">
+    <cover-view class='cuIcon-cu-image'>
+      <cover-image src="/images/tabbar/home{{PageCur=='home'?'_fill':''}}.png"></cover-image>
+    </cover-view>
+    <cover-view class="{{PageCur=='home'?'text-blue ':'text-gray'}}">首页</cover-view>
+  </cover-view>
+
+  <cover-view class="action" bindtap="NavChange" data-cur="detail" data-name="明细">
+    <cover-view class='cuIcon-cu-image'>
+      <cover-image src="/images/tabbar/form{{PageCur=='detail'?'_fill':''}}.png"></cover-image>
+    </cover-view>
+    <cover-view class="{{PageCur=='detail'?'text-blue':'text-gray'}}">明细</cover-view>
+  </cover-view>
+
+  <cover-view class="action" bindtap="NavChange" data-cur="charts" data-name="图表">
+    <cover-view class='cuIcon-cu-image'>
+      <cover-image src="/images/tabbar/rank{{PageCur=='charts'?'_fill':''}}.png"></cover-image>
+    </cover-view>
+    <cover-view class="{{PageCur=='charts'?'text-blue':'text-gray'}}">图表</cover-view>
+  </cover-view>
+  
+  <cover-view class="action" bindtap="NavChange" data-cur="person" data-name="我的">
+    <cover-view class='cuIcon-cu-image'>
+      <cover-image src="/images/tabbar/people{{PageCur=='person'?'_fill':''}}.png"></cover-image>
+    </cover-view>
+    <cover-view class="{{PageCur=='person'?'text-blue':'text-gray'}}">我的</cover-view>
+  </cover-view>
+</cover-view >
+<view class='cu-tabbar-height'></view>

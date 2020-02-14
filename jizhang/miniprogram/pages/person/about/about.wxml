@@ -1,0 +1,11 @@
+<!--miniprogram/pages/person/about/about.wxml-->
+<view class='margin-xl flex flex-direction justify-center align-center bg-white padding-xl radius shadow-lg'>
+  <image class="cu-avatar lg margin-sm shadow radius2" src="../../../images/YYjz-logo.png"></image>
+  <view class='text-center margin-bottom text-lg text-bold text-grey'>关于YY记账本</view>
+  <view class='text-content'>
+    <view>欢迎使用YY记账本！</view>
+    <view class='margin-top-sm'>该小程序是由个人开发的一款用于日常开支记账的小程序。用于学习和日常记账，不做任何商业用途。</view>
+    <view class='margin-top-sm'>基于ColorUI组件库开发，使用云开发作为后端数据支持。</view>
+    <view class='margin-top-sm'>更多功能敬请期待！</view>
+  </view>
+</view>

@@ -1,0 +1,71 @@
+<view class="cu-bar bg-white">
+  <text class="action text-bold "> 记录时间</text>
+</view>
+<view class="flex justify-center align-center bg-white padding-xs" >
+  <view class="cu-btn round line-blue padding-sm  margin-sm" bindtap="getFirstCalendarModal" data-cdate="{{firstdate.cdatel}}">
+      <text class="padding-lr">{{firstdate.date}}</text>
+      <text class="cuIcon-triangledownfill"></text>
+  </view>
+  <text class="text-gray padding-sm">---</text>
+    <view class="cu-btn round line-blue padding-sm  margin-sm" bindtap="getLastCalendarModal" data-cdate="{{lastdate.cdatel}}">
+      <text class="padding-lr">{{lastdate.date}}</text>
+      <text class="cuIcon-triangledownfill"></text>
+    </view>
+</view>
+
+<view class="cu-bar bg-white">
+  <text class="action text-bold"> 时间顺序</text>
+</view>
+<view class="flex justify-center align-center bg-white padding-xs" >
+    <view class="cu-btn round line-blue padding-sm  margin-sm {{sort=='由近到远'?'bg-blue text-white':''}}" bindtap="getsort" data-sort="由近到远">
+      <text class="padding-lr">由近到远</text>
+  </view>
+    <view class="cu-btn round line-blue padding-sm  margin-sm {{sort=='由远到近'?'bg-blue text-white':''}}" bindtap="getsort" data-sort="由远到近">
+      <text class="padding-lr">由远到近</text>
+    </view>
+</view>
+
+<view class='padding response '>
+    <view bindtap='filtersure' class='flex radius align-center justify-center bg-blue shadow response text-lg' style='height:80rpx;'>确定</view>
+</view>
+
+
+<view class="cu-modal bottom-modal {{modalName=='chooseCalendarModalFirst'||modalName=='chooseCalendarModalLast'?'show':''}}" bindtap="hideModal">
+  <view class="cu-dialog" catchtap>
+    <view class="cu-bar bg-white">
+      <view class="action text-gray" catchtap="hideModal">取消</view>
+      <view class="action text-blue" catchtap='sureCalendar'>确定</view>
+    </view>
+    <view>
+
+    <view class="text-center bg-white padding-sm text-xl flex justify-between align-center">
+        <text class="cuIcon-back padding-left-xl" catchtap="getlastmonth"></text>
+        <picker  mode="date" fields="month" value="{{date}}"  end="{{date+1}}" bindchange="DateChange">
+			<view>
+				{{year}}年{{month}}月
+			</view>
+		</picker>
+        <text class="cuIcon-right padding-right-xl" catchtap="getnextmonth"></text>
+    </view>
+    <view class="grid col-7 bg-white">
+        <view class="text-center text-bold text-blue"  wx:for="{{['日','一','二','三','四','五','六']}}" wx:key>
+          <text class="margin-xs">{{item}}</text>
+        </view>
+
+    <view class="text-center" wx:for="{{fwd}}" wx:key data-ldate="{{lmonthcount-fwd+index+1}}" catchtap="chooselmdate">
+      <view class="cu-btn round margin-xs  text-grey" style="width:60rpx;height:60rpx;">{{lmonthcount-fwd+index+1}}</view>
+    </view>
+
+    <view class="text-center "  wx:for="{{monthcount}}" wx:key data-date="{{index+1}}" catchtap="choosedate" >
+      <view class="cu-btn  round margin-xs {{year==thisyear&&month==thismonth&&thisday==index+1?'line-blue':''}} {{cdate==index+1?'bg-blue text-white':''}}" style="width:60rpx;height:60rpx;" >{{index+1}}</view>
+    </view>
+
+    <view class="text-center" wx:for="{{42-monthcount-fwd}}" wx:key data-ndate="{{index+1}}" catchtap="choosenmdate">
+      <view class="cu-btn round margin-xs  text-grey" style="width:60rpx;height:60rpx;">{{index+1}}</view>
+    </view>
+
+  </view>
+    </view>
+  </view>
+</view>
+

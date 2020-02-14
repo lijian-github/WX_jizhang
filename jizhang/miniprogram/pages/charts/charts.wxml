@@ -1,0 +1,15 @@
+<!--pages/charts/charts.wxml-->
+<view class="bg-white">
+<view class='cuIcon-title text-bold text-lg padding-sm bg-white'>{{thismonth}}月-日收支曲线</view>
+<view class="canvascontainer ">
+    <canvas canvas-id="lineCanvas"  class="canvas " bindtouchstart="touchHandler1"></canvas>
+</view>
+<view class='cuIcon-title text-bold text-lg padding-sm bg-white'>{{thisyear}}年-月收支曲线</view>
+<view class="canvascontainer">
+    <canvas canvas-id="lineCanvas2"  class="canvas" bindtouchstart="touchHandler2"></canvas>
+</view>
+<view class='cuIcon-title text-bold text-lg padding-sm bg-white'>{{thismonth}}月-分类支出比例</view>
+<view class="canvascontainer">
+    <canvas canvas-id="pieCanvas" class="canvas" style="height:300px"></canvas>
+</view>
+</view>

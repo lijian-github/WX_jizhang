@@ -1,0 +1,14 @@
+<!--miniprogram/pages/classify/classifylist/classifylist.wxml-->
+<view class='flex flex-direction' wx:for="{{showlist}}" wx:key wx:for-item="items">
+    <text class='text-bold text-df padding-sm'>{{items.title}}</text>
+    <view class="cu-list grid col-5">
+         <view class='cu-item' wx:for="{{items.classify}}" wx:key data-cftitle="{{items.title}}" data-title="{{item.title}}" data-icon="{{item.icon}}" bindtap="choosecf">
+         <text class='icon-{{item.icon}}' style='font-size:50rpx;color:black'></text>
+         <text>{{item.title}}</text>
+         </view>
+    </view>
+</view>
+<view bindtap='addclassify' class='response flex justify-center text-center text-xl margin-top'>
+      <text class='cuIcon-roundadd ' style='font-size:50rpx'></text>
+      <text>添加分类</text>
+</view>

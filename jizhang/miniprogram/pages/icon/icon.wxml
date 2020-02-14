@@ -1,0 +1,14 @@
+<!--miniprogram/pages/icon/icon.wxml-->
+<view class="cu-bar bg-white search fixed" style="top:{{CustomBar}}px">
+  <view class="search-form round">
+    <text class="cuIcon-search"></text>
+    <input type="text" placeholder="搜索icon" confirm-type="search" bindinput="searchIcon"></input>
+  </view>
+</view>
+
+<view class="cu-list grid col-4" style='margin-top:100rpx;'>
+  <view class="cu-item" wx:for="{{iconlist}}" wx:key wx:if="{{item.isShow}}" bindtap='geticon' data-name='{{item.iconname}}'>
+    <view class="icon-{{item.iconname}} lg" style='font-size:50rpx'></view>
+    <text class='text-cut'>{{item.iconname}}</text>
+  </view>
+</view>

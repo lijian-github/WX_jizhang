@@ -1,0 +1,23 @@
+<scroll-view scroll-x class="bg-white nav padding-lr solid-bottom fixed" >
+<view class="flex justify-between text-center">
+  <view class= "cu-item   {{'zhichu'==TabCur?'text-blue cur':''}}"  bindtap="tabSelect" data-id="zhichu">
+    支出
+  </view>
+  <view class="cu-item {{'shouru'==TabCur?'text-blue cur':''}}"  bindtap="tabSelect" data-id="shouru">
+    收入
+  </view>
+  <view class="cu-item {{'zhuanzhang'==TabCur?'text-blue cur':''}}"  bindtap="tabSelect" data-id="zhuanzhang">
+    转账
+  </view>
+  <!-- <view class="cu-item {{'huanzhang'==TabCur?'text-blue cur':''}}"  bindtap="tabSelect" data-id="huanzhang">
+    还账
+  </view> -->
+ </view>
+</scroll-view>
+<view style='margin-top:90rpx;'>
+<jizhang wx:if="{{TabCur=='zhichu'}}" data-type="支出" data-cflistid="payclassify"></jizhang>
+<jizhang wx:if="{{TabCur=='shouru'}}" data-type="收入" data-cflistid="incomeclassify"></jizhang>
+<jizhang wx:if="{{TabCur=='zhuanzhang'}}" data-type="转账"></jizhang>
+<!-- <jizhang wx:if="{{TabCur=='huanzhang'}}" data-type="还账" data-jecolor="green"></jizhang> -->
+</view>
+

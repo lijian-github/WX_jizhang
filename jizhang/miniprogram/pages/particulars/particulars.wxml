@@ -1,0 +1,76 @@
+<!--miniprogram/pages/particulars/particulars.wxml-->
+<wxs module="threeNum" src="../../utils/tothousands.wxs"></wxs>
+<wxs module="tcolor" src="../../utils/textcolor.wxs"></wxs>
+<view class="cu-bar bg-white" style="height:150rpx">
+  <view class="action">
+      <text class="icon-{{datalist.icon}} text-black" style="font-size:40rpx"></text>
+      <text class="margin-sm">{{datalist.classify}}</text>
+  </view>
+  <view class="margin-right text-xxl text-price text-bold text-{{tcolor.getcolor(datalist.type)}}">
+    {{threeNum.add_comma_toThousands(datalist.money)}}
+  </view>
+</view>
+
+<view class="bg-white margin-top padding-xs">
+    <view class="flex justify-between align-center padding-xs"> 
+        <view class="flex align-center text-gray">
+          <text class="cuIcon-similar " style="font-size:35rpx"></text>
+          <text class="padding-left-sm">分类</text>
+        </view>
+        <text>{{datalist.typeclassify}}/{{datalist.classify}}</text>
+    </view>
+    <view class="flex justify-between align-center padding-xs"> 
+        <view class="flex align-center text-gray">
+          <text class="cuIcon-pay" style="font-size:35rpx"></text>
+          <text class="padding-left-sm">账户</text>
+        </view>
+        <text>{{datalist.account}}/{{datalist.accountclassify}}</text>
+    </view>
+    <view class="flex justify-between align-center padding-xs"> 
+        <view class="flex align-center text-gray">
+          <text class="cuIcon-time" style="font-size:35rpx"></text>
+          <text class="padding-left-sm">时间</text>
+        </view>
+        <text>{{datalist.date.year}}-{{datalist.date.month}}-{{datalist.date.day}} {{datalist.date.time}}</text>
+    </view>
+    <view class="flex justify-between align-center padding-xs"> 
+        <view class="flex align-center text-gray">
+          <text class="cuIcon-location" style="font-size:35rpx"></text>
+          <text class="padding-left-sm">地点</text>
+        </view>
+        <text>{{datalist.place?datalist.place:'无'}}</text>
+    </view>
+    <view class="flex justify-between align-center padding-xs"> 
+        <view class="flex align-center text-gray">
+          <text class="cuIcon-edit" style="font-size:35rpx"></text>
+          <text class="padding-left-sm">备注</text>
+        </view>
+        <text>{{datalist.remarks?datalist.remarks:'无'}}</text>
+    </view>
+</view>
+
+<view class="bg-white margin-top padding-xs">
+  <view class="flex justify-between align-center padding-xs" bindtap="showimg"> 
+        <view class="flex align-center text-gray">
+          <text class="cuIcon-pic" style="font-size:35rpx"></text>
+          <text class="padding-left-sm">图片</text>
+        </view>
+        <text>{{datalist.pictures.length}}/4(点击查看)</text>
+    </view>
+    <view class="grid col-4 grid-square flex-sub" >
+			<view class="bg-img" wx:for="{{datalist.pictures}}" wx:key bindtap="viewimg" data-url='{{item}}'>
+				<image src='{{item}}' mode='aspectFill'></image>
+      </view>
+    </view>
+</view>
+
+<view class="cu-bar bg-white foot">
+  <view class="flex align-center justify-center solid-right text-green" style="width:50%;height:100rpx" bindtap="edit">
+  <text class=" cuIcon-edit" style="font-size:35rpx"></text>
+  <text>编辑</text>
+  </view>
+  <view class="flex align-center justify-center text-red" style="width:50%;height:100rpx" bindtap="del">
+  <text class=" cuIcon-delete " style="font-size:35rpx"></text>
+  <text>删除</text>
+  </view>
+</view>

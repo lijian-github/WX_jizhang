@@ -1,0 +1,33 @@
+{
+  "pages": [
+    "pages/tabbar/tabbar",
+    "pages/person/index/index",
+    "pages/home/index/index",
+    "pages/home/jiyibi/jiyibi",
+    "pages/icon/icon",
+    "pages/classify/addclassify/addclassify",
+    "pages/classify/editclassify/editclassify",
+    "pages/classify/classifylist/classifylist",
+    "pages/classify/cftemplate/cftemplate",
+    "pages/detail/filter/filter",
+    "pages/particulars/particulars",
+    "pages/particulars/edit/edit",
+    "pages/person/gallery/gallery",
+    "pages/person/homebg/homebg",
+    "pages/person/log/log",
+    "pages/person/about/about"
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTitleText": "YY记账本",
+    "navigationBarTextStyle": "black"
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  },
+  "sitemapLocation": "sitemap.json"
+}

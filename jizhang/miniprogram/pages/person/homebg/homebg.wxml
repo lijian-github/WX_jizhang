@@ -1,0 +1,10 @@
+<!--miniprogram/pages/person/homebg/homebg.wxml-->
+<view class="grid col-4 grid-square flex-sub margin-xs" >
+			<view class="bg-img {{item==selbg?'solidsblue':''}}" wx:for="{{bglist}}" wx:key bindtap="selectbg"  data-url="{{item}}" bindlongpress="viewimg">
+				<image src='{{item}}' mode='aspectFill'></image>
+      </view>
+</view>
+<view class='text-gray text-center padding-xs fixed' style="font-size:20rpx">温馨提示：长按查看</view>
+<view class='padding response '>
+    <view bindtap='suresel' class='flex radius align-center justify-center bg-blue shadow  text-bold text-lg' style='height:80rpx;'>确定</view>
+</view>

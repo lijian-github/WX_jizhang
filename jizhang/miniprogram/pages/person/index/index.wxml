@@ -1,0 +1,84 @@
+<!--miniprogram/pages/person/index/index.wxml-->
+<view class="padding flex bg-white shadow-warp" style='width:100%;'>
+  <view  style="width: 100rpx;height: 100rpx;overflow: hidden;border-radius: 20%;">
+    <open-data type="userAvatarUrl"></open-data>
+  </view>
+
+  <view class='margin-left  flex flex-direction' style='width:80%'>
+       <view class='text-xl text-bold text-black'>
+         <open-data class="userNick" type="userNickName"></open-data>
+       </view>
+       <view class='flex align-center text-df  text-gray margin-top-sm ' style='width:100%'>
+            <text>欢迎使用YY记账本</text>
+            <text class="cuIcon-appreciate"></text>
+       </view>
+   </view>
+  </view>
+
+<view class="cu-list menu shadow-lg radius margin-top">
+<view class="cu-item arrow">
+      <navigator class="content" url="../person/gallery/gallery" hover-class="none">
+        <text class="cuIcon-pic text-blue"></text>
+        <text class="text-grey">账单图库</text>
+      </navigator>
+</view>
+<view class="cu-item arrow">
+      <navigator class="content" url="../person/homebg/homebg" hover-class="none">
+        <text class="cuIcon-settings text-gray"></text>
+        <text class="text-grey">首页背景设置</text>
+      </navigator>
+</view>
+<view class="cu-item arrow" bindtap='zhflgl'>
+      <view class="content" >
+        <text class="cuIcon-moneybag text-orange"></text>
+        <text class="text-grey">账户分类管理</text>
+      </view>
+    </view>
+    <view class="cu-item arrow" bindtap='srflgl'>
+      <view class="content" >
+        <text class="cuIcon-moneybag text-red"></text>
+        <text class="text-grey">收入分类管理</text>
+      </view>
+    </view>
+    <view class="cu-item arrow" bindtap='zcflgl'>
+      <view class="content" >
+        <text class="cuIcon-moneybag text-green"></text>
+        <text class="text-grey">支出分类管理</text>
+      </view>
+    </view>
+</view>
+
+  <view class="cu-list menu  shadow-lg radius">
+    <view class="cu-item arrow">
+      <button class="cu-btn content" open-type="feedback">
+        <text class="cuIcon-writefill text-cyan"></text>
+        <text class="text-grey">意见反馈</text>
+      </button>
+    </view>
+
+    <view class="cu-item arrow">
+      <button class="cu-btn content" bindtap="cleardata">
+        <text class="cuIcon-repairfill text-cyan"></text>
+        <text class="text-grey">清除所有记录</text>
+      </button>
+    </view>
+
+    <view class="cu-item arrow">
+      <navigator class="content" url="../person/log/log" hover-class="none">
+        <text class="cuIcon-formfill text-green"></text>
+        <text class="text-grey">版本日志</text>
+      </navigator>
+    </view>
+    <view class="cu-item arrow">
+      <view class="content" bindtap="showQrcode">
+        <text class="cuIcon-appreciatefill text-red"></text>
+        <text class="text-grey">赞赏支持</text>
+      </view>
+    </view>
+    <view class="cu-item arrow">
+      <navigator class="content" url="../person/about/about" hover-class="none">
+        <text class="cuIcon-creativefill text-yellow"></text>
+        <text class="text-grey">关于小程序</text>
+      </navigator>
+    </view>
+  </view>

@@ -1,0 +1,28 @@
+<!--miniprogram/pages/person/log/log.wxml-->
+<view class="cu-timeline">
+  <view class="cu-item text-blue">
+    <view class="bg-blue content shadow">
+      <view class="cu-capsule radius">
+        <view class="cu-tag bg-white text-blue">v1.0.2</view>
+        <view class="cu-tag line-white">2019/08/24</view>
+      </view>
+      <view class="margin-top-sm text-content">
+        <view>1.修复分类管理删除不干净bug</view>
+      </view>
+      <view class="margin-top-sm text-content">
+        <view>2.修复日期选择器上月日期错误</view>
+      </view>
+    </view>   
+  </view>
+  <view class="cu-item text-blue">
+    <view class="bg-blue content shadow">
+      <view class="cu-capsule radius">
+        <view class="cu-tag bg-white text-blue">v1.0.1</view>
+        <view class="cu-tag line-white">2019/08/23</view>
+      </view>
+      <view class="margin-top-sm text-content">
+        <view>YY记账本v1.0.1正式上线</view>
+      </view>
+    </view>   
+  </view>
+</view>

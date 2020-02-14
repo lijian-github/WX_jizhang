@@ -1,0 +1,24 @@
+<!--miniprogram/pages/classify/addclassify/addclassify.wxml-->
+<view class='cu-list menu'>
+      <view class='cu-item'>
+            <text class='content'>分类名称</text>
+            <input placeholder='请输入分类名称' class='text-right' bindinput='getinput'></input>
+       </view>
+       <view class='cu-item'>
+            <text class='content'>是否创建类目(置顶)</text>
+             <switch class="blue radius sm" bindchange="switchtop" checked="{{iftop}}"></switch>
+       </view>
+       <view wx:if="{{!iftop}}" class='cu-item arrow'>
+            <text class='content'>所属类目</text>
+            <picker  style='height: 100rpx;width:80%' mode='selector' value='{{index}}' range="{{cfchoose}}"  range-key="{{'title'}}" bindchange="chooselm">
+            <view class='flex align-center justify-end' style='height: 100rpx;width:100%'>{{cfchoose[index].title}}</view>
+            </picker>
+            
+       </view>
+       <view class='cu-item arrow' bindtap='chooseimg'>
+            <text class='content'>图标</text>
+            <text class='icon-{{imgid}}' style='font-size:50rpx'></text>
+       </view>
+ </view>
+ <view class='response padding'><button class='response cu-btn lg bg-blue' bindtap='save'>保存</button></view>
+

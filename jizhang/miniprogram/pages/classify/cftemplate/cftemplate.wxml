@@ -1,0 +1,37 @@
+<!--miniprogram/pages/classify/cftemplate/cftemplate.wxml-->
+<wxs module="threeNum" src="../../../utils/tothousands.wxs"></wxs>
+<wxs module="tcolor" src="../../../utils/textcolor.wxs"></wxs>
+<view>
+<view  class="padding shadow bg-blue padding-tb-sm flex align-end " style='height:300rpx'>
+  <view class='cu-btn bg-green' style='position: absolute;right:30rpx;top:30rpx;width:200rpx'bindtap="bindadd">+新增分类</view>
+  <view class="text-white" style='width:100%'>
+  <view class="padding-xs">
+      {{type=="资产"?"净资产":"本月"+type}}：
+    </view>
+    <view class="padding-xs text-xxxl text-price">
+      {{qian1}}
+    </view>
+    <view class="padding-xs flex justify-between" style='width:100%'>
+      <view>{{type=="资产"?"总资产":"本年"+type}}：<text class="text-price">{{qian2}}</text></view>
+      <view>{{type=="资产"?"总负债":"总"+type}}：<text class="text-price">{{qian3}}</text></view>
+    </view>
+  </view>
+  
+</view>
+<view class='text-gray text-center padding-xs fixed' style="font-size:20rpx">温馨提示：左滑修改</view>
+
+<view class='cu-list menu card-menu shadow-lg'>
+      <view class="cu-item {{iftop?'arrow':''}}  {{modalName=='move-box-'+ index?'move-cur':''}}" wx:for="{{showlist}}" wx:key bindtouchstart="ListTouchStart" bindtouchmove="ListTouchMove" bindtouchend="ListTouchEnd" data-target="move-box-{{index}}" bindtap='binditem' data-index="{{index}}">
+        <view class='content flex align-center' >
+          <text class='icon-{{item.icon}}' style='font-size:50rpx'></text>
+          <text class='padding text-lg'>{{item.title}}</text>
+          </view>
+          <text class='padding text-lg text-{{tcolor.getcolor(type)}} text-price'>{{threeNum.add_comma_toThousands(item.money)}}</text>
+      <view class="move">
+        <view class="bg-grey" catchtap='bindedit' data-index="{{index}}">编辑</view>
+        <view class="bg-red" catchtap='binddel' data-index="{{index}}">删除</view>
+      </view>
+      </view>
+</view>
+</view>
+

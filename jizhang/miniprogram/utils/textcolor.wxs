@@ -1,0 +1,8 @@
+var getcolor = function (type) {
+  var jinecolor = '';
+  if (type == "支出") { jinecolor = 'green' }
+  if (type == "收入") { jinecolor = 'red' }
+  if (type == "转账") { jinecolor = 'orange' }
+  return jinecolor;
+}
+module.exports.getcolor = getcolor;

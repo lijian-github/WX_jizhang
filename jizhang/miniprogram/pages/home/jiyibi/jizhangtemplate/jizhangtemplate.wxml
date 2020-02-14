@@ -1,0 +1,94 @@
+<!--pages/home/zhichu/zhichu.wxml-->
+<view class='flex flex-direction'>
+<view class='cu-list menu'>
+      <view class='cu-item '>
+         <view class='content'>
+              金额
+         </view>
+         <input wx:if="{{type=='支出'}}" type='digit' placeholder-style='color:green' placeholder="0.00"  class='text-right text-xxl'  style='color:green;width:70%' bindinput="injine"></input>
+         <input wx:if="{{type=='收入'}}" type='digit' placeholder-style='color:red' placeholder="0.00"  class='text-right text-xxl'  style='color:red;width:70%' bindinput="injine"></input>
+         <input wx:if="{{type=='转账'}}" type='digit' placeholder-style='color:orange' placeholder="0.00"  class='text-right text-xxl'  style='color:orange;width:70%' bindinput="injine"></input>
+      </view>
+      <view wx:if="{{!tssz}}" bindtap='fenlei' class='cu-item arrow'>
+         <view class='content'>
+              分类
+         </view>
+         <view >{{fenlei}}</view>
+      </view>
+      <view wx:if="{{!tssz}}" bindtap='zhanghu' class='cu-item arrow'>
+         <view class='content'>
+              账户
+         </view>
+         <view >{{zhanghu}}</view>
+      </view>
+
+      <view wx:if="{{tssz}}" class='cu-item arrow '>
+         <text class='arrowleft '></text>
+         <view bindtap='fkzhanghu' class='flex align-center ' style='width:35%;height:100rpx'>
+              {{fkzhanghu}}
+         </view>
+         <text class='text-center cuIcon-end text-blue' style='width:10%;font-size:50rpx'></text>
+         <view bindtap='skzhanghu'  class='flex align-center justify-end'  style='width:35%;height:100rpx'>{{skzhanghu}}</view>
+      </view>
+
+      	<view class="cu-item arrow">
+		<view class="content">日期选择</view>
+		<picker  style='height: 100rpx;width:80%' mode="date" value="{{date}}" start="2010-09-01" end="{{date+1}}" bindchange="DateChange">
+			<view class='flex align-center justify-end' style='height: 100rpx;width:100%'>
+				{{date}}
+			</view>
+		</picker>
+	</view>
+</view>
+
+<view style='width:100%'>
+<view class= ' flex justify-center align-center fr text-sm text-grey margin-sm' >快速选择 : 
+    <button class='cu-btn text-sm sm line-grey margin-lr-xs' bindtap='today_2'>前天</button>
+    <button class='cu-btn text-sm sm line-grey margin-lr-xs' bindtap='today_1'>昨天</button>
+    <button class='cu-btn text-sm sm line-grey margin-lr-xs' bindtap='today'>今天</button>
+</view>
+</view>
+
+<view class='cu-list menu '>
+      <view wx:if="{{!tssz}}" class='cu-item'>
+         <view class='content'>
+              地点
+         </view>
+         <input bindinput='location' class='text-right margin-right'  value="{{location}}" style="width:40%"></input>
+         <switch class="blue radius sm" bindchange="switch"></switch>
+      </view>
+      
+      <view class='cu-item '>
+         <view class='content'>
+              备注
+         </view>
+         <input class='text-right' bindinput="beizhu" placeholder="本笔账单简单说明"  ></input>
+      </view>
+
+      <view class="cu-bar bg-white">
+		<view class="action text-black">
+			图片上传
+		</view>
+		<view class="action">
+			{{imgList.length}}/4
+		</view>
+	</view>
+  
+	<view class="cu-form-group">
+		<view class="grid col-4 grid-square flex-sub" >
+			<view class="bg-img" wx:for="{{imgList}}" wx:key="{{index}}" bindtap="ViewImage" data-url="{{imgList[index].url}}">
+				<image src='{{imgList[index]}}' mode='aspectFill'></image>
+				<view class="cu-tag bg-red" catchtap="DelImg" data-index="{{index}}">
+					<text class="cuIcon-close"></text>
+				</view>
+			</view>
+			<view class="solids" bindtap="ChooseImage" wx:if="{{imgList.length<4}}">
+				<text class="cuIcon-cameraadd"></text>
+			</view>
+		</view>
+	</view>
+</view>
+
+<button class='cu-btn bg-blue lg margin-xs shadow' bindtap='save'>保存</button>
+
+</view>
